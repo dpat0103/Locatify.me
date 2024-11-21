@@ -1,0 +1,122 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(45deg, #ff6b6b, #f06595, #fcf7e7, #48dbfb);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+    100% { background-position: 0% 0%; }
+}
+
+nav {
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    padding: 10px 0;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 20px;
+    border-radius: 4px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #1f2e3d;
+    transform: scale(1.1);
+}
+
+.Title_Content {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.Title_Content h1 {
+    color: rgb(0, 0, 0);
+    margin: 0;
+    font-size: 48px;
+}
+
+.Title_Content p {
+    color: rgb(0, 0, 0);
+    font-size: 24px;
+}
+
+
+.Middle_Content {
+    text-align: center;
+}
+
+#Middle_Content_Paragraph_1 {
+    font-size: larger;
+    padding-left: 25%;
+    padding-right: 25%;
+}
+
+#Middle_Content_Paragraph_2 {
+    font-size: larger;
+    padding-left: 25%;
+    padding-right: 25%;
+}
+#homepage_locate_button {
+    background: #FF4742;
+    border: 1px solid #FF4742;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 16px;
+    min-height: 40px;
+    outline: 0;
+    padding: 12px 14px;
+    text-align: center;
+    text-rendering: geometricprecision;
+    text-transform: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+  }
+  
+#homepage_locate_button:hover,
+#homepage_locate_button:active {
+background-color: initial;
+background-position: 0 0;
+color: #FF4742;
+}
+
+#homepage_locate_button:active {
+opacity: .5;
+}
+  
+
+#Why_Choose_Header{
+
+}

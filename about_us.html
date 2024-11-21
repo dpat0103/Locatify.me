@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/about_us.css') }}"
+    />
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="{{ url_for('index')}}">Home</a></li>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/vpn-services">VPN Services</a></li>
+        <li><a href="{{ url_for('ip_info')}}">LocatifyMe</a></li>
+        <li><a href="/help">Help</a></li>
+      </ul>
+    </nav>
+    <div class="Title_Content">
+      <h1>About Locatify.me</h1>
+    </div>
+
+    <div class="Middle_Content">
+      <p id="Middle_Content_Paragraph_1">
+        Locatify.Me is your go-to platform for precise and reliable IP and
+        geolocation information. We understand the importance of knowing where
+        your online traffic originates and how it impacts your business or
+        personal projects. That's why we offer a straightforward, user-friendly
+        service that delivers accurate IP details and geographical data in real
+        time.
+      </p>
+      <p id="Middle_Content_Paragraph_2">
+        At Locatify.Me, we provide comprehensive IP address information,
+        including the associated city, state, and country. Our service also
+        pinpoints the latitude and longitude of your IP address, offering a
+        clear understanding of your digital location. Whether you're a developer
+        integrating location-based services, a marketer targeting specific
+        regions, or simply a curious user, our platform offers the data you need
+        with just a few clicks.
+      </p>
+      <h2 id="Why_Choose_Header">Why Choose Locatify.Me?</h2>
+      <p>      Accuracy: We utilize cutting-edge technology to ensure the highest
+        level of accuracy in our IP and geolocation data.
+      </p>
+      <p> User-Friendly: Our interface is designed to be intuitive, allowing
+        users of all technical levels to access the information they need
+        quickly and easily.</p>
+      <ul id="List_Of_Benefits">
+        <li>
+          Accuracy: We utilize cutting-edge technology to ensure the highest
+          level of accuracy in our IP and geolocation data.
+        </li>
+        <li>
+          User-Friendly: Our interface is designed to be intuitive, allowing
+          users of all technical levels to access the information they need
+          quickly and easily.
+        </li>
+        <li>
+          Real-Time Data: Locatify.Me provides instant results, ensuring you
+          have up-to-date information whenever you need it.
+        </li>
+        <li>
+          Privacy-Conscious: We prioritize your privacy by not storing any
+          personal data beyond the necessary IP and location details for the
+          service.
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

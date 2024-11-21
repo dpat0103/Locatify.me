@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/home_page_styles.css') }}"
+    />
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="{{ url_for('index')}}">Home</a></li>
+        <li><a href="{{ url_for('get_about_us')}}">About Us</a></li>
+        <li><a href="/vpn-services">VPN Services</a></li>
+        <li><a href="{{ url_for('ip_info')}}">LocatifyMe</a></li>
+        <li><a href="/help">Help</a></li>
+      </ul>
+    </nav>
+    <div class="Title_Content">
+      <h1>Welcome to Locatify.me</h1>
+      <p>Your trusted partner for IP and VPN services.</p>
+    </div>
+
+    <div class="Middle_Content">
+      <p id="Middle_Content_Paragraph_1">
+        The Internet is vast with its offerings within a click of a button!
+        However, attackers are able to compromise vital Information about your
+        location through your IP address, which is why it is benefical to keep
+        yourself protected and know your information that is available publicly!
+      </p>
+      <p id="Middle_Content_Paragraph_2">
+        Hit the button below and learn about you in the Internet world and
+        protect your identity!
+      </p>
+      <a href="{{ url_for('ip_info')}}">
+        <button id="homepage_locate_button">Locate Me!</button>
+      </a>
+    </div>
+  </body>
+</html>

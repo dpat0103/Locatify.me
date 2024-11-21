@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IP Information</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+      function displayInfoBox_test() {
+        document.querySelector(".Result_Container").style.display = "inherit";
+      }
+    </script>
+    <script>
+      async function getIpInfo() {
+        try {
+          let response = await fetch("https://api.ipify.org?format=json");
+          let data = await response.json();
+          let ip = data.ip;
+
+          response = await fetch(`http://ip-api.com/json/${ip}`);
+          data = await response.json();
+
+          document.getElementById("ipInfo").innerHTML = `
+                    <p><strong>IP:</strong> ${data.query}</p>
+                    <p><strong>City:</strong> ${data.city}</p>
+                    <p><strong>Region:</strong> ${data.regionName}</p>
+                    <p><strong>Country:</strong> ${data.country}</p>
+                    <p><strong>ISP:</strong> ${data.isp}</p>
+                    <p><strong>Latitude:</strong> ${data.lat}</p>
+                    <p><strong>Longitude:</strong> ${data.lon}</p>
+                `;
+
+          // Initialize the map
+          const map = L.map("map").setView([data.lat, data.lon], 19);
+
+          // Add a tile layer to the map
+          L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            maxZoom: 12,
+          }).addTo(map);
+          // Add a marker to the map
+          L.marker([data.lat, data.lon])
+            .addTo(map)
+            .bindPopup(
+              `<b>${data.city}</b><br>${data.regionName}, ${data.country}`
+            )
+            .openPopup();
+          setTimeout(() => {
+            map.invalidateSize(); // Recalculate the map size
+          }, 100); // Delay slightly to en
+        } catch (error) {
+          console.error("Error fetching IP info:", error);
+          document.getElementById("ipInfo").innerHTML =
+            "<p>Error fetching IP info</p>";
+        }
+        displayInfoBox_test();
+      }
+    </script>
+    <script>
+      async function setup_ip_info() {
+        try {
+          let response = await fetch("https://api.ipify.org?format=json");
+          let data = await response.json();
+          let ip = data.ip;
+
+          response = await fetch(`http://ip-api.com/json/${ip}`);
+          data = await response.json();
+
+          document.getElementById("IP").innerHTML = `
+                      <p><strong>My IP is:</strong> ${data.query}</p>
+                  `;
+          document.getElementById("City").innerHTML = `
+                      <p><strong>City:</strong> ${data.city}</p>
+                  `;
+
+          document.getElementById("Region").innerHTML = `
+                      <p><strong>Region:</strong> ${data.regionName}</p>
+                  `;
+
+          document.getElementById("Country").innerHTML = `
+                      <p><strong>Country:</strong> ${data.country}</p>
+                  `;
+          document.getElementById("ISP").innerHTML = `
+                      <p><strong>ISP:</strong> ${data.isp}</p>
+                  `;
+          document.getElementById("Latitude").innerHTML = `
+                      <p><strong>Latitude:</strong> ${data.lat}</p>
+                  `;
+          document.getElementById("Longitude").innerHTML = `
+                      <p><strong>Longitude:</strong> ${data.lon}</p>
+                  `;
+
+          // Initialize the map
+          const map = L.map("map").setView([data.lat, data.lon], 13);
+
+          // Add a tile layer to the map
+          L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            maxZoom: 19,
+          }).addTo(map);
+
+          // Add a marker to the map
+          L.marker([data.lat, data.lon])
+            .addTo(map)
+            .bindPopup(
+              `<b>${data.city}</b><br>${data.regionName}, ${data.country}`
+            )
+            .openPopup();
+            setTimeout(() => {
+            map.invalidateSize(); // Recalculate the map size
+          }, 100); // Delay slightly to en
+        } catch (error) {
+          console.error("Error fetching IP info:", error);
+          document.getElementById("ipInfo").innerHTML =
+            "<p>Error fetching IP info</p>";
+        }
+        displayInfoBox_test();
+      }
+    </script>
+
+    <style>
+      #map {
+        height: 400px !important;
+        width: 400px !important;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="{{ url_for('index')}}">Home</a></li>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/vpn-services">VPN Services</a></li>
+        <li><a href="/locatifyme">LocatifyMe</a></li>
+        <li><a href="/help">Help</a></li>
+      </ul>
+    </nav>
+    <div class="LocatifyTitle_And_Button">
+      <h1>LocatifyMe</h1>
+      <button onclick="setup_ip_info()">Get My IP Info</button>
+    </div>
+    <div class="Result_Container">
+        <div class="General_Info">
+          <div id="IP"></div>
+          <div id="ISP"></div>
+        </div>
+        <div class="Location_Info">
+          <h1>Location Info</h1>
+          <div id="City"></div>
+          <div id="Region"></div>
+          <div id="Country"></div>
+        </div>
+        <div class="Map_Info">
+          <div id="map"></div>
+          <div id="Longitude"></div>
+          <div id="Latitude"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
